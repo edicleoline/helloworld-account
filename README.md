@@ -1,6 +1,10 @@
 # Helloworld Account
+
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)
+
 Don't worry, even though this README is in Portuguese, the code is fully bilingual! It speaks fluent Python... and English. So, go ahead and dive in — no translation required, just your coding skills! 😎
 
+## Introdução
 **Helloworld Account** é uma biblioteca completa para gerenciamento de contas de usuário, permitindo a atualização de informações pessoais e configurações da conta.
 
 ## Principais Funcionalidades

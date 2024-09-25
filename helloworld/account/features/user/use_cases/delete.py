@@ -12,5 +12,5 @@ class DeleteUseCase(BaseUseCaseUnitOfWork[str, None], ABC):
 class DeleteUseCaseImpl(DeleteUseCase):
     async def execute(self, user_id: str) -> None:
         async with self.unit_of_work as unit_of_work:
-            user_repository: UserRepository = await unit_of_work.repository_factory.create(UserRepository)
+            user_repository: UserRepository = await unit_of_work.repository_factory.instance(UserRepository)
             await user_repository.delete(user_id)

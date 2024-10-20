@@ -11,5 +11,5 @@ class UserRepositoryImpl(UserRepository, BaseRepository[UserEntity, UserModel]):
     def __init__(self, session: AsyncSession, authorization: str | None = None):
         super().__init__(session=session, model_cls=UserModel, authorization=authorization)
 
-    async def find(self, identity_id: str) -> UserEntity | None:
+    async def find(self, identity_id: int) -> UserEntity | None:
         return await self._find(identity_id=identity_id)

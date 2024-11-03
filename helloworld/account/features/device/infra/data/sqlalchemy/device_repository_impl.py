@@ -11,5 +11,5 @@ class DeviceRepositoryImpl(DeviceRepository, BaseRepository[DeviceEntity, Device
     def __init__(self, session: AsyncSession, authorization: str | None = None):
         super().__init__(session=session, model_cls=DeviceModel, authorization=authorization)
 
-    async def find(self, id: int) -> DeviceEntity | None:
+    async def find(self, id: str) -> DeviceEntity | None:
         return await self._find(id=id)

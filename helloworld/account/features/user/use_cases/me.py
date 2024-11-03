@@ -5,7 +5,7 @@ from abc import ABC
 from helloworld.core import BaseUseCaseUnitOfWork
 from helloworld.account.features.user import UserEntity
 from helloworld.account.features.user.data import UserRepository
-from helloworld.auth.jwt.services import AbstractService
+from helloworld.auth.jwt.services import TokenService
 from helloworld.auth.error import exceptions
 
 class MeUseCase(BaseUseCaseUnitOfWork[str, UserEntity], ABC):
@@ -15,7 +15,7 @@ class MeUseCase(BaseUseCaseUnitOfWork[str, UserEntity], ABC):
 class MeUseCaseImpl(MeUseCase):
     async def execute(self, **kwargs) -> UserEntity | None:
         async with self.unit_of_work as unit_of_work:
-            token_service: AbstractService = await self.services.get("authentication", "token")
+            token_service: TokenService = await self.services.get("authentication", "token")
             decoded_token = await token_service.decode(self.authorization)
 
             if not decoded_token or not decoded_token.get("sub"):

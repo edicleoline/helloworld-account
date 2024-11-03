@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import overload
 
 from helloworld.core.data import AbstractRepository, TModel
@@ -13,4 +13,6 @@ class PhoneRepository(AbstractRepository[PhoneEntity, TModel], ABC):
     @overload
     async def find(self, id: int) -> PhoneEntity | None: ...
 
-    async def find(self, **kwargs) -> PhoneEntity | None: ...
+    @abstractmethod
+    async def find(self, **kwargs) -> PhoneEntity | None:
+        raise NotImplementedError
